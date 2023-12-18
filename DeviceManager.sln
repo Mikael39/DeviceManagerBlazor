@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceManager.Server", "DeviceManager\Server\DeviceManager.Server.csproj", "{EDEA15DF-3D1C-4009-BF5C-9178986A4F6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeviceManager.Server", "DeviceManager\Server\DeviceManager.Server.csproj", "{EDEA15DF-3D1C-4009-BF5C-9178986A4F6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceManager.Client", "DeviceManager\Client\DeviceManager.Client.csproj", "{71C205CA-D0A1-4D54-983E-12EC1ECCE41C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeviceManager.Client", "DeviceManager\Client\DeviceManager.Client.csproj", "{71C205CA-D0A1-4D54-983E-12EC1ECCE41C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceManager.Shared", "DeviceManager\Shared\DeviceManager.Shared.csproj", "{DDBC7F4A-5BCE-404D-8808-BF10C0135DE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeviceManager.Shared", "DeviceManager\Shared\DeviceManager.Shared.csproj", "{DDBC7F4A-5BCE-404D-8808-BF10C0135DE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

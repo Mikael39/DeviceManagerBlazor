@@ -20,7 +20,7 @@ namespace DeviceManager.Shared.Domain
     }
     public  class Device
     {
-        public Guid DeviceId { get; set; }
+        public int DeviceId { get; set; }
         public Location Location { get; set; }
 
         public DateTime Date { get; set; }

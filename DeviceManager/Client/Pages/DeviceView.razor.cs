@@ -2,26 +2,22 @@
 using DeviceManager.Shared.Domain;
 using Microsoft.AspNetCore.Components;
 
-namespace DeviceManager.Client.Components
+namespace DeviceManager.Client.Pages
 {
-
-
-    public partial class DeviceList
+    public partial class DeviceView 
     {
-        [Parameter]
-        public string ExtraCaption { get; set; } = string.Empty;
-
         [Inject]
         public IDeviceDataService? DeviceDataService { get; set; }
 
-        public List<Device> DeviceLst { get; set; } = new List<Device>();
+        [Parameter]
+        public string DeviceId { get; set; }
+
+        public Device Device { get; set; } = new Device();
 
         protected override void OnInitialized()
         {
-
-            DeviceLst = DeviceDataService.GetDevices();
+            Device = DeviceDataService.GetDevice(int.Parse(DeviceId));
             base.OnInitialized();
-
         }
 
     }

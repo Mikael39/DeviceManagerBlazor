@@ -1,40 +1,32 @@
-﻿<h3>DeviceList</h3>
-
+﻿﻿@ExtraCaption
 <table class="table">
-
     <thead>
-
         <tr>
-
             <th scope="col">Device Id</th>
-
             <th scope="col">Location</th>
-
             <th scope="col">Date</th>
-
             <th scope="col">Type</th>
-
             <th scope="col">Status</th>
-
+            <th scope="col">View</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
         </tr>
-
     </thead>
-
     <tbody>
-        
-    @foreach(var device in Devices)
-    {
+        @foreach (var device in DeviceLst)
+        {
             <tr>
-                <th scope="row">@device.Location</th>
-                <th scope="row">@device.DeviceId</th>
-                <th scope="row">@device.Date</th>
-                <th scope="row">@device.DeviceType</th>
-                <th scope="row">@device.Status</th>
+                <td scope="row">@device.DeviceId</td>
+                <td scope="row">@device.Location</td>
+                <td scope="row">@device.Date</td>
+                <td scope="row">@device.DeviceType</td>
+                <td scope="row">@device.Status</td>
+                <td scope="row"><a href="@($"deviceview/{device.DeviceId}")" class="btn btn-outline-primary">View</a></td>
+                <td scope="row"><a href="@($"deviceupdate/{device.DeviceId}")" class="btn btn-outline-primary">Update</a></td>
+                <td scope="row"><a href="@($"devicedelete/{device.DeviceId}")" class="btn btn-outline-primary">Delete</a></td>
+
             </tr>
-    }
-
-        
-
+        }
     </tbody>
-
 </table>
+<a href="@($"deviceadd")" class="btn btn-outline-primary">Add new Device</a>
