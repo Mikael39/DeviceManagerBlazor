@@ -1,6 +1,8 @@
 ﻿using DeviceManager.Client.Services;
 using Microsoft.AspNetCore.Components;
 
+
+
 namespace DeviceManager.Client.Components
 {
     public partial class DailyStats

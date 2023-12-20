@@ -1,6 +1,7 @@
 ﻿using DeviceManager.Client.Services;
 using DeviceManager.Shared.Domain;
 using Microsoft.AspNetCore.Components;
+using System.Text.Json;
 
 namespace DeviceManager.Client.Pages
 {
@@ -10,14 +11,35 @@ namespace DeviceManager.Client.Pages
         public IDeviceDataService? DeviceDataService { get; set; }
 
         [Parameter]
-        public string DeviceId { get; set; }
+        public int DeviceId { get; set; }
 
         public Device Device { get; set; } = new Device();
 
-        protected override void OnInitialized()
+        public string responseData = string.Empty;
+        public bool Error = false;
+
+        protected override async Task OnInitializedAsync()
         {
-            Device = DeviceDataService.GetDevice(int.Parse(DeviceId));
-            base.OnInitialized();
+            var response = await Http.GetAsync("/device/" + DeviceId);
+            if(response.IsSuccessStatusCode)
+            {
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    PropertyNameCaseInsensitive = true,
+
+                };
+
+                responseData = await response.Content.ReadAsStringAsync();
+                Device = JsonSerializer.Deserialize<Device>(responseData, options);
+            }
+
+                else
+                {
+                    Error = true;
+                }
+
+            await base.OnInitializedAsync();
         }
 
     }

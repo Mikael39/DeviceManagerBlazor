@@ -14,13 +14,16 @@ namespace DeviceManager.Client.Pages
         public NavigationManager NavigationManager { get; set; }
 
         [Parameter]
-        public string DeviceId { get; set; } = string.Empty;
+        public int? DeviceId { get; set; }
 
         public Device Device { get; set; } = new Device();
 
         protected override void OnInitialized()
         {
-            Device = DeviceDataService.GetDevice(int.Parse(DeviceId));
+            if (DeviceId.HasValue)
+            {
+                Device = DeviceDataService.GetDevice(DeviceId.Value);
+            }
 
             base.OnInitialized();
         }

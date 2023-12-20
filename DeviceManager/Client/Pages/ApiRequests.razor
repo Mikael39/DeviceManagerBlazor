@@ -1,5 +1,8 @@
 ﻿@page "/apirequests"
 @inject HttpClient Http
+@using DeviceManager.Shared.Domain
+@using System.Text.Json
+@using System.Text.Json.Serialization
 
 <h3>ApiRequests</h3>
 
@@ -9,10 +12,14 @@
 <h5>Device from API: @deviceAndButtonFromApi</h5>
 <button class="btn btn-primary" @onclick="GetDeviceAndButtonFromApi">Get Device and Button from API</button>
 
+<h5>Device Type: @deviceTypeFromApi</h5>
+<button class="btn btn-primary" @onclick="GetDeviceTypeFromApi">Get Device type from API</button>
+
 @code {
 
     private string deviceFromApi = string.Empty;
     private string deviceAndButtonFromApi = string.Empty;
+    private string deviceTypeFromApi = string.Empty;
 
     protected async Task GetDeviceFromAPI()
     {
@@ -31,6 +38,19 @@
         if (response.IsSuccessStatusCode)
         {
             deviceAndButtonFromApi = await response.Content.ReadAsStringAsync();
+        }
+    }
+
+    protected async Task GetDeviceTypeFromApi()
+    {
+        var response = await Http.GetAsync("/device/0");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var stringData = await response.Content.ReadAsStringAsync();
+            var a = JsonSerializer.Deserialize(stringData, typeof(List<Device>)) as List<Device>;
+            List<Device> devices = System.Text.Json.JsonSerializer.Deserialize<List<Device>>(stringData);
+            //var devices = await response.Content;
         }
     }
 }

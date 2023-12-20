@@ -1,7 +1,16 @@
-﻿﻿@ExtraCaption
+﻿
+﻿@ExtraCaption
+@inject HttpClient Http
+
+
+@if (Error)
+{
+    <div class="alert alert-danger" role="alert"></div>
+}
+
 <table class="table">
     <thead>
-        <tr>
+<tr>
             <th scope="col">Device Id</th>
             <th scope="col">Location</th>
             <th scope="col">Date</th>
@@ -30,3 +39,8 @@
     </tbody>
 </table>
 <a href="@($"deviceadd")" class="btn btn-outline-primary">Add new Device</a>
+<br />Return from API:
+<br />
+@responseData
+<br />
+<br />
